@@ -107,9 +107,9 @@ public class vlogin extends javax.swing.JFrame {
         JLImagen.setFont(new java.awt.Font("Trebuchet MS", 1, 13)); // NOI18N
         JLImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        MenuAdm.setText("Administrador");
+        MenuAdm.setText("Mantenimiento");
 
-        MenuUsuario.setText("Usuarios");
+        MenuUsuario.setText("Consultar Usuarios");
         MenuUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuUsuarioActionPerformed(evt);

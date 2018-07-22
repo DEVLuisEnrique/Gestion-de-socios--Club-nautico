@@ -10,9 +10,9 @@ public class ClassConexion {
         {
             try
                 {
-                    con = DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\L.Enrique\\Documents\\NetBeansProjects\\JAVA Orientado a Objeto\\Gestion de Barcos\\GestionBarcoSistema.accdb");
-                    sentencia = con.createStatement();
-                     //JOptionPane.showMessageDialog(null, "Conexion a la base de datos Exitosa ");
+                   String sql="jdbc:sqlserver://localhost:1433;databaseName=GestionSociosClub;IntegratedSecurity=true";
+                   con=DriverManager.getConnection(sql);
+                  // JOptionPane.showMessageDialog(null, "Conexion a la base de datos Exitosa ");
                 }
             catch(Exception e)
                 {

@@ -6,12 +6,12 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="MenuAdm">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Administrador"/>
+            <Property name="text" type="java.lang.String" value="Mantenimiento"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="MenuUsuario">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Usuarios"/>
+                <Property name="text" type="java.lang.String" value="Consultar Usuarios"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuUsuarioActionPerformed"/>

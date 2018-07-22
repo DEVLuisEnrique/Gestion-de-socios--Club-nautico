@@ -12,7 +12,7 @@ public class vAyuda extends javax.swing.JDialog {
                 + "Con este sistema podra gestionar todo lo relacionada con la entrada y salida de barco de\n"
                 + "su organizacion.\n"
                 + "\nVersion: 0.0.1\nGracias por utilizar nuestro sistemas de gestion.\n\n\n"
-                + "by Ingenieros Luis Enrique Rodriguez Gonzalez.\nCon colaboracion:\nAdrian A.Aguero\n"
+                + "by Ingenieros:\nLuis Enrique Rodriguez Gonzalez.\nAdrian A. Taveras\n"
                 + "Junior Rodriguez.\nEmmanuel Soriano.\nFausto Abreu.");
     }
 

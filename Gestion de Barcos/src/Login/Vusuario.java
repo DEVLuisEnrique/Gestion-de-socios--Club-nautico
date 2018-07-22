@@ -10,12 +10,12 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Vusuario extends javax.swing.JDialog {
-    DefaultTableModel modelo = new DefaultTableModel();
+    //DefaultTableModel modelo = new DefaultTableModel();
     ClassConexion conex = new ClassConexion();
     
         Statement sentencia;
         Connection con=null;
-    
+        ResultSet r;
     public Vusuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -23,7 +23,7 @@ public class Vusuario extends javax.swing.JDialog {
        
         
         con = conex.getConnection();
-       String titulos[] = 
+       /*String titulos[] = 
             {   "Codigos",
                 "Nombre",
                "Apellidos",
@@ -51,7 +51,7 @@ public class Vusuario extends javax.swing.JDialog {
       
       try
         {
-           ResultSet r = sentencia.executeQuery("Select * from Registro");
+           ResultSet r = sentencia.executeQuery("Select * from RegistroUsuarios");
            String filas[] = new String[7];
            while(r.next())
             {
@@ -69,10 +69,52 @@ public class Vusuario extends javax.swing.JDialog {
       catch(Exception e)
         {
            JOptionPane.showMessageDialog(null,"Error al extraer datos de la DB"); 
-        }
-        
+        }*/
+       
+       PropiedadesTabla(); 
         
     }
+    
+    
+   public void PropiedadesTabla()
+        {
+             String titulos[] = 
+            {   "Codigos",
+                "Nombre",
+               "Apellidos",
+               "Telefono",
+               "Email",
+               "Usuario",
+               "Clave"
+
+            };
+            DefaultTableModel modelo = new DefaultTableModel(null,titulos);
+           JTTablaUsuario.setModel(modelo);
+            
+       try {
+           sentencia =con.createStatement();
+           r = sentencia.executeQuery("Select * From RegistroUsuarios");
+           
+            String filas[] = new String[7];
+           while(r.next())
+            {
+                filas[0] = r.getString("Codigos");
+                filas[1] = r.getString("Nombre");
+                filas[2] = r.getString("Apellidos");
+                filas[3] = r.getString("Telefono");
+                filas[4] = r.getString("Email");
+                filas[5] = r.getString("Usuario");
+                filas[6] = r.getString("Clave");
+                modelo.addRow(filas);
+            }
+           JTTablaUsuario.setModel(modelo);
+            
+       } catch (Exception  ex) {
+           JOptionPane.showMessageDialog(null, "Error al mostrar los datos.", "AVISO", JOptionPane.PLAIN_MESSAGE);
+       }
+        
+        
+        } 
 
    
     @SuppressWarnings("unchecked")
@@ -117,9 +159,10 @@ public class Vusuario extends javax.swing.JDialog {
         });
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        jLabel1.setText("Administrador de usuarios");
+        jLabel1.setText("Colsuta Usuarios Registrados");
         jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Digite Codigo:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -132,37 +175,41 @@ public class Vusuario extends javax.swing.JDialog {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1)
-                            .addComponent(jButton2)
-                            .addComponent(jScrollPane1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(293, 293, 293)
+                        .addGap(296, 296, 296)
                         .addComponent(jLabel1)
-                        .addGap(0, 310, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btneliminar)
-                .addGap(141, 141, 141))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btneliminar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(310, 310, 310))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btneliminar)
                     .addComponent(txtcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btneliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -183,19 +230,22 @@ public class Vusuario extends javax.swing.JDialog {
 
         try
             {
-                
-                String sql = "DELETE * FROM Registro WHERE Codigo="+txtcodigo.getText();
                 con = conex.getConnection();
                 Statement st = con.createStatement();
-                ResultSet resultado =st.executeQuery(sql);
+                String sql = "DELETE From RegistroUsuarios WHERE Codigos="+txtcodigo.getText();
+               
+                st.executeUpdate(sql);
+                
                 
                 
                 JOptionPane.showMessageDialog(null, "Eliminacion sastifactoria",null,JOptionPane.PLAIN_MESSAGE);
-            
+                
+                 PropiedadesTabla(); 
+                 txtcodigo.setText("");
             }
         catch(Exception e)
             {
-                JOptionPane.showMessageDialog(null, "Error al intentar eliminar los datos"+e,null,JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error al intentar eliminar los datos",null,JOptionPane.ERROR_MESSAGE);
             }
         
     

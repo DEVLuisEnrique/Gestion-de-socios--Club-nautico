@@ -106,7 +106,7 @@ public class VGestionPricipal extends javax.swing.JDialog implements Runnable{
         });
         jMenu1.add(MenuRegistrarCliente);
 
-        MenuVerRegistro.setText("Ver Socios");
+        MenuVerRegistro.setText("Consultar");
         MenuVerRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuVerRegistroActionPerformed(evt);
@@ -196,13 +196,13 @@ public class VGestionPricipal extends javax.swing.JDialog implements Runnable{
         if(op==JOptionPane.OK_OPTION)
             {
                 
-                JOptionPane.showMessageDialog(null,"Gracias por usar\nEl sistema de gestion de barcos.","Aviso",JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Gracias por usar\nEl sistema de gestion de socios_Club Nautico.","Aviso",JOptionPane.PLAIN_MESSAGE);
                 System.exit(0);
                 
             }
         else if(op==JOptionPane.NO_OPTION )
             {
-               JOptionPane.showMessageDialog(null,"Binvenido");
+               JOptionPane.showMessageDialog(null,"Bienvenido nuevamente");
             }
         else if(op==JOptionPane.CANCEL_OPTION )
             {

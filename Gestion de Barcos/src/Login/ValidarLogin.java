@@ -17,7 +17,7 @@ public int validar_ingreso()
         String clave = String.valueOf(Login.vlogin.txtclave.getPassword());
     
         int resultado=0;
-        String sql="Select * From Registro Where Usuario='"+usuario+"' and Clave=('"+clave+"')";
+        String sql="Select * From RegistroUsuarios Where Usuario='"+usuario+"' and Clave=('"+clave+"')";
         Connection conect=null;
         try {
         conect = con.getConnection();
